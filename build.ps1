@@ -66,6 +66,8 @@ if($LastExitCode){
 	exit(1)
 }
 
+cp $publishDir\* dist -Recurse
+
 $env:BUCKET_PROJECT_VERSION=$versionNormalized.trim()
 $env:BUCKET_FILE_VERSION=$fileVersion.trim()
 $env:BUCKET_STABILITY=$matches["stability"].substring(1).trim()
