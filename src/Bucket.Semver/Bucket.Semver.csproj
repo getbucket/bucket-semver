@@ -6,8 +6,8 @@
     <Version>0.2.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Authors>getbucket</Authors>
-    <Company>getbucket</Company>
+    <Authors>bucket</Authors>
+    <Company>bucket</Company>
     <Description>Semantic versioning utilities with the addition of version constraints parsing and checking.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/getbucket/bucket-semver</PackageProjectUrl>
