@@ -4,5 +4,15 @@
     <AssemblyVersion>0.2.0.0</AssemblyVersion>
     <FileVersion>0.2.0.0</FileVersion>
     <Version>0.2.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>getbucket</Authors>
+    <Company>getbucket</Company>
+    <Description>Semantic versioning utilities with the addition of version constraints parsing and checking.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/getbucket/bucket-semver</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/getbucket/bucket-semver</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>semver, bucket</PackageTags>
   </PropertyGroup>
 </Project>
