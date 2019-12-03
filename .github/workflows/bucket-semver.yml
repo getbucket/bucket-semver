@@ -3,10 +3,8 @@ name: Bucket semver
 on: [push, pull_request]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  windows:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
     - name: Setup bucket semver
