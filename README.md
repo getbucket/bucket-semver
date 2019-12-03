@@ -1,4 +1,4 @@
-# Bucket Semver
+# Semver Parser
 
 The [semver](https://semver.org/) library that offers utilities, version constraint parsing and validation.
 
