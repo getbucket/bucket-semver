@@ -1,4 +1,4 @@
-name: Bucket semver
+name: bucket-semver
 
 on: [push, pull_request]
 
