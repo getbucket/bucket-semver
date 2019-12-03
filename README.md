@@ -1,10 +1,10 @@
-# Semver Parser ![](https://github.com/getbucket/bucket-semver/workflows/bucket-semver/badge.svg)
+# Semver Parser ![](https://github.com/getbucket/semver/workflows/bucket-semver/badge.svg)
 
 The [semver](https://semver.org/) library that offers utilities, version constraint parsing and validation.
 
 ## Learning
 
-Bucket semver has the most extensive and thorough [documentation](https://github.com/getbucket/bucket-semver/wiki), making it a breeze to get started with the comparison.
+Bucket semver has the most extensive and thorough [documentation](https://github.com/getbucket/semver/wiki), making it a breeze to get started with the comparison.
 
 ## License
 
@@ -13,6 +13,6 @@ The source code borrowed and modified from [composer semver](https://github.com/
 
 ## Supported
 
-- [New Issues](https://github.com/getbucket/bucket-semver/issues): We will respond within 2 business days at the latest.
+- [New Issues](https://github.com/getbucket/semver/issues): We will respond within 2 business days at the latest.
 
 
