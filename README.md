@@ -14,5 +14,3 @@ The source code borrowed and modified from [composer/semver](https://github.com/
 ## Supported
 
 - [New Issues](https://github.com/getbucket/semver/issues): We will respond within 2 business days at the latest.
-
-
