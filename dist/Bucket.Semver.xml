@@ -1,0 +1,726 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bucket.Semver</name>
+    </assembly>
+    <members>
+        <member name="T:Bucket.Semver.Comparator">
+            <summary>
+            The version comparator facade.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.GreaterThan(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> &gt; <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> greater than <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.GreaterThanOrEqual(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> &gt;= <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> greater than or equal <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.LessThan(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> &lt; <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> less than <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.LessThanOrEqual(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> &lt;= <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> less than or equal <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.Equal(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> == <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> equal to <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.NotEqual(System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> != <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> not equal to <paramref name="b"/>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Comparator.Compare(System.String,System.String,System.String)">
+            <summary>
+            Evaluates the expression: <paramref name="a"/> <paramref name="operator"/> <paramref name="b"/>.
+            </summary>
+            <param name="a">The left version.</param>
+            <param name="operator">The operator.</param>
+            <param name="b">The right version.</param>
+            <returns>True if the <paramref name="a"/> <paramref name="operator"/> <paramref name="b"/>.</returns>
+        </member>
+        <member name="T:Bucket.Semver.Constraint.BaseConstraint">
+            <summary>
+            a base class that represents a constraint.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.BaseConstraint.Matches(Bucket.Semver.Constraint.IConstraint)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.BaseConstraint.SetPrettyString(System.String)">
+            <summary>
+            Sets the constraint pretty string.
+            </summary>
+            <param name="prettyString">The pretty string.</param>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.BaseConstraint.GetPrettyString">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.BaseConstraint.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.BaseConstraint.GetDefaultString">
+            <summary>
+            Get the default description string.
+            </summary>
+            <returns>Returns the default description string.</returns>
+        </member>
+        <member name="T:Bucket.Semver.Constraint.Constraint">
+            <summary>
+            Define a constraint.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.Constraint.transStrOp">
+            <summary>
+            Operator to enum translation table.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.Constraint.transOpStr">
+            <summary>
+            Enum to operator translation table.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.Constraint.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.Constraint.Constraint"/> class.
+            </summary>
+            <param name="operatorString">The operator string.</param>
+            <param name="version">The version.</param>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.Constraint.Matches(Bucket.Semver.Constraint.IConstraint)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.Constraint.MatchSpecific(Bucket.Semver.Constraint.Constraint,System.Boolean)">
+            <summary>
+            Whether the matching condition is met.
+            </summary>
+            <param name="provider">The constraint instance.</param>
+            <param name="compareBranches">Whether is compare branche.</param>
+            <returns>True if the provider satisfies the condition.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.Constraint.GetDefaultString">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.Constraint.VersionCompare(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Compliance with operating conditions.
+            </summary>
+            <param name="left">The left vaule.</param>
+            <param name="right">The right value.</param>
+            <param name="operatorString">The operator string.</param>
+            <param name="compareBranches">Whether is compare branch.</param>
+            <returns>True if compliance with operating conditions.</returns>
+        </member>
+        <member name="T:Bucket.Semver.Constraint.ConstraintMulti">
+            <summary>
+            Defines a conjunctive or disjunctive set of constraints.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintMulti.#ctor(Bucket.Semver.Constraint.IConstraint[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.Constraint.ConstraintMulti"/> class.
+            </summary>
+            <param name="constraints">An array of constraints.</param>
+        </member>
+        <member name="P:Bucket.Semver.Constraint.ConstraintMulti.IsConjunctive">
+            <summary>
+            Gets or sets a value indicating whether the constraints should be treated as "and" conjunctive or disjunctive.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintMulti.Matches(Bucket.Semver.Constraint.IConstraint)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintMulti.GetConstraints">
+            <summary>
+            Gets an array of constraints.
+            </summary>
+            <returns>Returns an array of constraints.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintMulti.GetDefaultString">
+            <inheritdoc />
+        </member>
+        <member name="T:Bucket.Semver.Constraint.ConstraintNone">
+            <summary>
+            Defines the absence of a constraint.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintNone.Matches(Bucket.Semver.Constraint.IConstraint)">
+            <inheritdoc />
+        </member>
+        <member name="M:Bucket.Semver.Constraint.ConstraintNone.GetDefaultString">
+            <inheritdoc />
+        </member>
+        <member name="T:Bucket.Semver.Constraint.IConstraint">
+            <summary>
+            Represent a constraint.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.IConstraint.Matches(Bucket.Semver.Constraint.IConstraint)">
+            <summary>
+            Whether the matching condition is met.
+            </summary>
+            <param name="provider">Provide matching objects.</param>
+            <returns>True if the provider satisfies the condition.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Constraint.IConstraint.GetPrettyString">
+            <summary>
+            Gets the constraint pretty string.
+            </summary>
+            <returns>Returns the pretty string.</returns>
+        </member>
+        <member name="T:Bucket.Semver.Constraint.OperatorTypes">
+            <summary>
+            The operation types of compare.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.Equal">
+            <summary>
+            Are equal.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.Less">
+            <summary>
+            Are less.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.LessEqual">
+            <summary>
+            Are less equal.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.Greate">
+            <summary>
+            Are greate.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.GreateEqual">
+            <summary>
+            Are greate equal
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.Constraint.OperatorTypes.NonEqual">
+            <summary>
+            Are non equal
+            </summary>
+        </member>
+        <member name="T:Bucket.Semver.IVersionParser">
+            <summary>
+            Represents a version parser.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.IVersionParser.Normalize(System.String,System.String)">
+            <summary>
+            Normalizes a version string to be able to perform comparisons on it.
+            </summary>
+            <param name="version">The version needs to normalize.</param>
+            <param name="fullVersion">An optional complete version string to give more context.(use for debug log).</param>
+            <returns>Return's version can be able to perform comparisons on it.</returns>
+        </member>
+        <member name="M:Bucket.Semver.IVersionParser.NormalizeBranch(System.String)">
+            <summary>
+            Normalizes a branch name to be able to perform comparisons on it.
+            </summary>
+            <param name="branch">The branch name.</param>
+            <returns>Returns normalized branch name.</returns>
+        </member>
+        <member name="M:Bucket.Semver.IVersionParser.ParseConstraints(System.String)">
+            <summary>
+            Parses a constraint string into MultiConstraint and/or Constraint objects.
+            </summary>
+            <param name="constraints">The version-constrained string.</param>
+            <returns>Returns the <see cref="T:Bucket.Semver.Constraint.IConstraint"/> objects.</returns>
+        </member>
+        <member name="T:Bucket.Semver.ParseException">
+            <summary>
+            Bucket runtime exception.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.ParseException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.ParseException"/> class.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.ParseException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.ParseException"/> class.
+            </summary>
+            <param name="message">The exception message as a single string.</param>
+        </member>
+        <member name="M:Bucket.Semver.ParseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.ParseException"/> class.
+            </summary>
+            <param name="message">The exception message as a single string.</param>
+            <param name="innerException">The exception as a inner exception.</param>
+        </member>
+        <member name="T:Bucket.Semver.Semver">
+            <summary>
+            Semver version tool.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.Semver.SetParser(Bucket.Semver.IVersionParser)">
+            <summary>
+            Sets the version parser instance.
+            </summary>
+            <param name="versionParser">The version parser instance.</param>
+        </member>
+        <member name="M:Bucket.Semver.Semver.GetParser">
+            <summary>
+            Gets the version parser instance.
+            </summary>
+            <returns>Returns the version parser instance.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Semver.Satisfies(System.String,System.String)">
+            <summary>
+            Determine if given version satisfies given constraints.
+            </summary>
+            <param name="version">The given version.</param>
+            <param name="constraints">The constraints version.</param>
+            <returns>True if the versions meet each other.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Semver.SatisfiesBy(System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Return all versions that satisfy given constraints.
+            </summary>
+            <param name="versions">An array of given versions.</param>
+            <param name="constraints">The constraints version.</param>
+            <returns>Returns an array of satisfy versions.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Semver.Sort(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Sort given array of versions.
+            </summary>
+            <param name="versions">An array of given versions.</param>
+            <param name="desc">Whether is sort by desc. otherwise asc.</param>
+            <returns>Returns an array of sorted versions.</returns>
+        </member>
+        <member name="M:Bucket.Semver.Semver.Filter``1(System.Collections.Generic.IEnumerable{``0},System.Predicate{``0},System.Boolean)">
+            <summary>
+            Each value in the source array is passed to the callback function.
+            If the callback function is equal to the <paramref name="expected"/>
+            value, the current value in the input array is added to the result array.
+            </summary>
+            <remarks>
+            This code copied from https://github.com/CatLib/Core/blob/master/src/CatLib.Core/Support/Arr.cs.
+            </remarks>
+            <typeparam name="T">The type of array.</typeparam>
+            <param name="sources">The specified array.</param>
+            <param name="predicate">The callback.</param>
+            <param name="expected">The expected value.</param>
+            <returns>Returns an filtered array.</returns>
+        </member>
+        <member name="T:Bucket.Semver.SemVersion">
+            <summary>
+            A semantic version implementation.
+            Conforms to v2.0.0 of http://semver.org/ .
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.SemVersion" /> class.
+            </summary>
+            <param name="major">The major version.</param>
+            <param name="minor">The minor version.</param>
+            <param name="patch">The patch version.</param>
+            <param name="prerelease">The prerelease version (eg. "alpha").</param>
+            <param name="build">The build eg ("nightly.232").</param>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.#ctor(System.Version)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.SemVersion"/> class.
+            </summary>
+            <param name="version">The <see cref="T:System.Version"/> that is used to initialize
+            the Major, Minor, Patch and Build properties.</param>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bucket.Semver.SemVersion" /> class.
+            </summary>
+            <param name="major">The major version.</param>
+            <param name="minor">The minor version.</param>
+            <param name="patch">The patch version.</param>
+            <param name="revision">The revision version.</param>
+            <param name="prerelease">The prerelease version (eg. "alpha").</param>
+            <param name="build">The build eg ("nightly.232").</param>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Major">
+            <summary>
+            Gets the major version.
+            </summary>
+            <value>
+            The major version.
+            </value>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Minor">
+            <summary>
+            Gets the minor version.
+            </summary>
+            <value>
+            The minor version.
+            </value>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Patch">
+            <summary>
+            Gets the patch version.
+            </summary>
+            <value>
+            The patch version.
+            </value>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Revision">
+            <summary>
+            Gets the revision version.
+            </summary>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Prerelease">
+            <summary>
+            Gets the pre-release version.
+            </summary>
+            <value>
+            The pre-release version.
+            </value>
+        </member>
+        <member name="P:Bucket.Semver.SemVersion.Build">
+            <summary>
+            Gets the build version.
+            </summary>
+            <value>
+            The build version.
+            </value>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_Implicit(System.String)~Bucket.Semver.SemVersion">
+            <summary>
+            Implicit conversion from string to SemVersion.
+            </summary>
+            <param name="version">The semantic version.</param>
+            <returns>The SemVersion object.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_Equality(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the equals operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is equal to right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_Inequality(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the un-equal operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is not equal to right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_GreaterThan(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the greater operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is greater than right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_GreaterThanOrEqual(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the greater than or equal operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is greater than or equal to right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_LessThan(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the less operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is less than right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.op_LessThanOrEqual(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            The override of the less than or equal operator.
+            </summary>
+            <param name="left">The left value.</param>
+            <param name="right">The right value.</param>
+            <returns>If left is less than or equal to right <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Parse(System.String,System.Boolean)">
+            <summary>
+            Parses the specified string to a semantic version.
+            </summary>
+            <param name="version">The version string.</param>
+            <param name="strict">If set to <c>true</c> minor and patch version are required, else they default to 0.</param>
+            <returns>The SemVersion object.</returns>
+            <exception cref="T:System.InvalidOperationException">When a invalid version string is passed.</exception>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.TryParse(System.String,Bucket.Semver.SemVersion@,System.Boolean)">
+            <summary>
+            Parses the specified string to a semantic version.
+            </summary>
+            <param name="version">The version string.</param>
+            <param name="semver">When the method returns, contains a SemVersion instance equivalent
+            to the version string passed in, if the version string was valid, or <c>null</c> if the
+            version string was not valid.</param>
+            <param name="strict">If set to <c>true</c> minor and patch version are required, else they default to 0.</param>
+            <returns><c>False</c> when a invalid version string is passed, otherwise <c>true</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Equals(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            Tests the specified versions for equality.
+            </summary>
+            <param name="versionA">The first version.</param>
+            <param name="versionB">The second version.</param>
+            <returns>If versionA is equal to versionB <c>true</c>, else <c>false</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Compare(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion)">
+            <summary>
+            Compares the specified versions.
+            </summary>
+            <param name="versionA">The version to compare to.</param>
+            <param name="versionB">The version to compare against.</param>
+            <returns>If versionA &lt; versionB <c>&lt; 0</c>, if versionA &gt; versionB <c>&gt; 0</c>,
+            if versionA is equal to versionB <c>0</c>.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Compare(Bucket.Semver.SemVersion,Bucket.Semver.SemVersion,System.String)">
+            <summary>
+            Compares the specified versions.
+            </summary>
+            <param name="versionA">The version to compare to.</param>
+            <param name="versionB">The version to compare against.</param>
+            <param name="operator">The operation of compare.</param>
+            <returns>True if the compliance with operation.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Change(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            Make a copy of the current instance with optional altered fields.
+            </summary>
+            <param name="major">The major version.</param>
+            <param name="minor">The minor version.</param>
+            <param name="patch">The patch version.</param>
+            <param name="prerelease">The prerelease text.</param>
+            <param name="build">The build text.</param>
+            <returns>The new version object.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.CompareTo(System.Object)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates
+            whether the current instance precedes, follows, or occurs in the same position in the sort order as the
+            other object.
+            </summary>
+            <param name="obj">An object to compare with this instance.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            The return value has these meanings: Value Meaning Less than zero
+             This instance precedes <paramref name="obj" /> in the sort order.
+             Zero This instance occurs in the same position in the sort order as <paramref name="obj" />. i
+             Greater than zero This instance follows <paramref name="obj" /> in the sort order.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.CompareTo(Bucket.Semver.SemVersion)">
+            <summary>
+            Compares the current instance with another object of the same type and returns an integer that indicates
+            whether the current instance precedes, follows, or occurs in the same position in the sort order as the
+            other object.
+            </summary>
+            <param name="other">An object to compare with this instance.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            The return value has these meanings: Value Meaning Less than zero
+             This instance precedes <paramref name="other" /> in the sort order.
+             Zero This instance occurs in the same position in the sort order as <paramref name="other" />. i
+             Greater than zero This instance follows <paramref name="other" /> in the sort order.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.PrecedenceMatches(Bucket.Semver.SemVersion)">
+            <summary>
+            Compares to semantic versions by precedence. This does the same as a Equals, but ignores the build information.
+            </summary>
+            <param name="other">The semantic version.</param>
+            <returns><c>true</c> if the version precedence matches.</returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.CompareByPrecedence(Bucket.Semver.SemVersion)">
+            <summary>
+            Compares to semantic versions by precedence. This does the same as a Equals, but ignores the build information.
+            </summary>
+            <param name="other">The semantic version.</param>
+            <returns>
+            A value that indicates the relative order of the objects being compared.
+            The return value has these meanings: Value Meaning Less than zero
+             This instance precedes <paramref name="other" /> in the version precedence.
+             Zero This instance has the same precedence as <paramref name="other" />. i
+             Greater than zero This instance has creater precedence as <paramref name="other" />.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" /> is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:Bucket.Semver.SemVersion.CompareStability(System.String,System.String,System.Int32@)">
+            <summary>
+            Compare special version characters.
+            </summary>
+            <remarks>
+            If a part contains special version strings these are handled in the following order:
+            any string not found in this list , dev , alpha(a) = beta(b), rc , # , pl(p), stable.
+            </remarks>
+        </member>
+        <member name="T:Bucket.Semver.Stabilities">
+            <summary>
+            The stability flag.
+            </summary>
+        </member>
+        <member name="T:Bucket.Semver.VersionParser">
+            <summary>
+            Bucket version parser.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.VersionMax">
+            <summary>
+            Represents a maximum version that can be parsed, usually a special tag.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.VersionMaster">
+            <summary>
+            Represents the major version of a branch, usually a special tag.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.RegexPreReleaseString">
+            <summary>
+            Pre-release extraction rules are applicable to semver.
+            - Only stabilities as recognized by Bucket are allowed to precede a numerical identifier.
+            - Numerical-only pre-release identifiers are not supported.
+            - This is a superset of the Semver semantic version(Applied to pre-release fields).
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.RegexBuildString">
+            <summary>
+            Build extraction rules are applicable to semver.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.RegexBucketVersion">
+            <summary>
+            Version extraction rules applicable to semver.
+            Represents a classic versioning.
+            - This is a subset of the Semver semantic version(Added revision field).
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.RegexDateTimeVersion">
+            <summary>
+            Represents a date(time) based versioning.
+            </summary>
+        </member>
+        <member name="F:Bucket.Semver.VersionParser.Masters">
+            <summary>
+            Indicates the main branch.
+            </summary>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.ParseStability(System.String)">
+            <summary>
+            Returns the stability of a version.
+            </summary>
+            <param name="version">The semversion version.</param>
+            <returns>The version stability.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.Normalize(System.String,System.String)">
+            <summary>
+            Normalizes a version string to be able to perform comparisons on it.
+            </summary>
+            <param name="version">The version needs to normalize.</param>
+            <param name="fullVersion">An optional complete version string to give more context.(use for debug log).</param>
+            <returns>Return's version can be able to perform comparisons on it.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.NormalizeBranch(System.String)">
+            <summary>
+            Normalizes a branch name to be able to perform comparisons on it.
+            </summary>
+            <param name="branch">The branch name.</param>
+            <returns>Returns normalized branch name.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.ParseConstraints(System.String)">
+            <summary>
+            Parses a constraint string into MultiConstraint and/or Constraint objects.
+            </summary>
+            <param name="constraints">The version-constrained string.</param>
+            <returns>Returns the <see cref="T:Bucket.Semver.Constraint.IConstraint"/> objects.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.NormalizeStabilityString(System.String)">
+            <summary>
+            Normalized stability identification string.
+            </summary>
+            <param name="stability">The stability string.</param>
+            <returns>Normalized stability string.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.ParseStabilityString(System.String)">
+            <summary>
+            Expand shorthand stability string to <see cref="T:Bucket.Semver.Stabilities"/>.
+            </summary>
+            <param name="stability">The shorthand stability string.</param>
+            <returns>Returns the <see cref="T:Bucket.Semver.Stabilities"/> value.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.ManipulateVersionString(System.Text.RegularExpressions.GroupCollection,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Increment, decrement, or simply pad a version number.
+            </summary>
+            <remarks>This method is internal support method for <see cref="M:Bucket.Semver.VersionParser.ParseConstraint(System.String)"/>.</remarks>
+            <param name="matched">Array with version parts in array indexes 0,1,2,3.</param>
+            <param name="position">0(major),1(minor),2(patch),3(revision) - which segment of the version to increment/decrement.</param>
+            <param name="increment">Increased value.</param>
+            <param name="pad">The string to pad version parts after segment.</param>
+            <returns>Returns the new version.</returns>
+        </member>
+        <member name="M:Bucket.Semver.VersionParser.ParseConstraint(System.String)">
+            <summary>
+            Parses one constraint string.
+            </summary>
+            <param name="constraint">The version-constrained string.</param>
+            <returns>Returns the <see cref="T:Bucket.Semver.Constraint.IConstraint"/> objects.</returns>
+        </member>
+    </members>
+</doc>
