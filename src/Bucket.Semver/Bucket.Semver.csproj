@@ -10,8 +10,8 @@
     <Company>bucket</Company>
     <Description>Semantic versioning utilities with the addition of version constraints parsing and checking.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/getbucket/bucket-semver</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/getbucket/bucket-semver</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/getbucket/semver</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/getbucket/semver</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <PackageTags>semver, bucket</PackageTags>
   </PropertyGroup>
