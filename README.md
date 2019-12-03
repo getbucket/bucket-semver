@@ -9,7 +9,7 @@ Bucket semver has the most extensive and thorough [documentation](https://github
 ## License
 
 The open source license used by Bucket is MIT license.
-The source code borrowed and modified from [composer semver](https://github.com/composer/semver)
+The source code borrowed and modified from [composer](https://github.com/composer/semver)
 
 ## Supported
 
