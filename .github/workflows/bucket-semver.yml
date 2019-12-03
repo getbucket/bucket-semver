@@ -12,6 +12,6 @@ jobs:
     - name: Setup bucket semver
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.2.108
+        dotnet-version: 3.0.100
     - name: Test bucket semver
       run: dotnet test -c Release -s src/settings.runsettings /p:CollectCoverage=true /p:CoverletOutputFormat=teamcity /p:Exclude=[*.Tests]* /p:Threshold=60 /p:ThresholdType=line
