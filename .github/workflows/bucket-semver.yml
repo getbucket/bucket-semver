@@ -16,4 +16,6 @@ jobs:
     - name: Report code coverage
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-      run: bash <(curl -s https://codecov.io/bash) -f coverage/coverage.opencover.xml -t $CODECOV_TOKEN
+      run: | 
+        dotnet tool install --global Codecov.Tool
+        codecov -f coverage/coverage.opencover.xml
