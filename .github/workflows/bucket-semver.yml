@@ -12,7 +12,7 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Test bucket semver
-      run: dotnet test -c Release -s src/settings.runsettings /p:CollectCoverage=true /p:CoverletOutputFormat=\"json,teamcity,opencover\" /p:CoverletOutput=\"../../coverage/\" /p:Exclude=[*.Tests]* /p:Threshold=60 /p:ThresholdType=line
+      run: dotnet test -c Release -s src/settings.runsettings /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=\"../../coverage/\" /p:Exclude=[*.Tests]* /p:Threshold=60 /p:ThresholdType=line
     - name: Report code coverage
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
