@@ -9,8 +9,11 @@ Bucket semver has the most extensive and thorough [documentation](https://github
 ## License
 
 The open source license used by Bucket is MIT license.
-The source code borrowed and modified from [composer/semver](https://github.com/composer/semver)
 
 ## Supported
 
 - [New Issues](https://github.com/getbucket/semver/issues): We will respond within 2 business days at the latest.
+
+## Acknowledgments
+
+The source code logic and concepts started out as a [composer/semver](https://github.com/composer/semver)
