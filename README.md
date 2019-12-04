@@ -1,4 +1,4 @@
-# Semver Parser ![](https://github.com/getbucket/semver/workflows/bucket-semver/badge.svg)
+# Semver Parser ![](https://github.com/getbucket/semver/workflows/bucket-semver/badge.svg) [![codecov](https://codecov.io/gh/getbucket/semver/branch/master/graph/badge.svg)](https://codecov.io/gh/getbucket/semver)
 
 The [semver](https://semver.org/) library that offers utilities, version constraint parsing and validation.
 
