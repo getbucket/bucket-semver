@@ -595,6 +595,13 @@ namespace Bucket.Semver
 
                 if (CompareStability(ac, bc, out int result))
                 {
+                    // In the case of equal stability, subsequent
+                    // characters will continue to be compared.
+                    if (result == 0 && (i + 1) < minLen)
+                    {
+                        continue;
+                    }
+
                     return result;
                 }
 
