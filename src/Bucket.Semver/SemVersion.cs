@@ -527,13 +527,7 @@ namespace Bucket.Semver
             }
 
             var other = (SemVersion)obj;
-
-            return Major == other.Major &&
-                Minor == other.Minor &&
-                Patch == other.Patch &&
-                Revision == other.Revision &&
-                string.Equals(Prerelease, other.Prerelease, StringComparison.Ordinal) &&
-                string.Equals(Build, other.Build, StringComparison.Ordinal);
+            return CompareTo(other) == 0;
         }
 
         /// <summary>
@@ -600,6 +594,12 @@ namespace Bucket.Semver
                     if (result == 0 && (i + 1) < minLen)
                     {
                         continue;
+                    }
+
+                    // Version numbers with more fields have advantages.
+                    if (result == 0 && (i + 1) >= minLen)
+                    {
+                        return aComps.Length.CompareTo(bComps.Length);
                     }
 
                     return result;

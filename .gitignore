@@ -3,3 +3,4 @@ src/*/bin/
 src/*/obj/
 TestResults/
 coverage.json
+.dist
